@@ -82,6 +82,8 @@ body { font-family: var(--font-sans); color: var(--color-text-primary); backgrou
 .sec-sub { font-size: 16px; color: var(--ink2); line-height: 1.85; margin-bottom: 1.6rem; font-weight: 500; }
 
 /* Before/After */
+.ba-illust { border-radius: var(--border-radius-xl); overflow: hidden; border: 2px solid var(--gl); line-height: 0; }
+.ba-img { width: 100%; height: auto; display: block; }
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .ba-card { border-radius: var(--border-radius-xl); padding: 1.3rem; border: 2px solid; }
 .ba-x { background: var(--crl); border-color: #ffd9cd; }
@@ -265,27 +267,9 @@ body { font-family: var(--font-sans); color: var(--color-text-primary); backgrou
 
 <section class="sec sec-cream">
   <span class="eyebrow eb-coral"><i class="ti ti-mood-sad" style="font-size:13px" aria-hidden="true"></i>あるある</span>
-  <h2 class="sec-h2">テニスの帰り道、こうなっていませんか？</h2>
   <p class="sec-sub">応援したいのに、うまく伝わらない。そのすれ違いが、少しずつ親子の距離をひろげてしまいます。</p>
-  <div class="ba-grid">
-    <div class="ba-card ba-x">
-      <div class="ba-head"><div class="ba-badge ba-badge-x"><i class="ti ti-mood-sad" style="font-size:16px" aria-hidden="true"></i></div><div class="ba-title">ラリーが、いないと…</div></div>
-      <ul class="ba-items">
-        <li class="ba-item"><i class="ti ti-point-filled" style="font-size:12px;color:#ff7a59;flex-shrink:0;margin-top:3px" aria-hidden="true"></i>「どうだった？」「べつに」で会話が終わる</li>
-        <li class="ba-item"><i class="ti ti-point-filled" style="font-size:12px;color:#ff7a59;flex-shrink:0;margin-top:3px" aria-hidden="true"></i>つい「ちゃんとやった?」と言ってしまう</li>
-        <li class="ba-item"><i class="ti ti-point-filled" style="font-size:12px;color:#ff7a59;flex-shrink:0;margin-top:3px" aria-hidden="true"></i>子どもがムッとして車内が重い空気に</li>
-        <li class="ba-item"><i class="ti ti-point-filled" style="font-size:12px;color:#ff7a59;flex-shrink:0;margin-top:3px" aria-hidden="true"></i>何を頑張っているのか分からない</li>
-      </ul>
-    </div>
-    <div class="ba-card ba-o">
-      <div class="ba-head"><div class="ba-badge ba-badge-o"><i class="ti ti-mood-happy" style="font-size:16px" aria-hidden="true"></i></div><div class="ba-title">ラリーが、いると！</div></div>
-      <ul class="ba-items">
-        <li class="ba-item"><i class="ti ti-check" style="font-size:13px;color:#7cb518;flex-shrink:0;margin-top:2px" aria-hidden="true"></i>子どもの気持ちが、ちゃんと届いている</li>
-        <li class="ba-item"><i class="ti ti-check" style="font-size:13px;color:#7cb518;flex-shrink:0;margin-top:2px" aria-hidden="true"></i>「バックハンド入ったね！」と具体的にほめられる</li>
-        <li class="ba-item"><i class="ti ti-check" style="font-size:13px;color:#7cb518;flex-shrink:0;margin-top:2px" aria-hidden="true"></i>子どもが自分から話してくれる</li>
-        <li class="ba-item"><i class="ti ti-check" style="font-size:13px;color:#7cb518;flex-shrink:0;margin-top:2px" aria-hidden="true"></i>目標を知った上でサポートできる</li>
-      </ul>
-    </div>
+  <div class="ba-illust">
+    <img src="problem.png" alt="レッスン終了時こうなっていませんか？ ラリーがいないと「どうだった？」「べつに」で会話が終わるが、ラリーがいると子どもが自分から話してくれる" class="ba-img">
   </div>
 </section>
 
