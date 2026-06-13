@@ -468,11 +468,18 @@ body { font-family: var(--font-sans); color: var(--color-text-primary); backgrou
     </div>
     <h2 class="cta-h2">さあ、ラリー君と<br>新しい親子の会話を</h2>
     <p class="cta-p">登録は1分で完了。まずは無料でお試しください。</p>
-    <form class="cta-form" onsubmit="alert('ご登録ありがとうございます！リリース時にご連絡します。');return false;">
-      <input type="email" placeholder="メールアドレスを入力" required />
-      <button type="submit" class="btn btn-sun" style="padding:0 24px;font-size:14px;height:48px;white-space:nowrap;box-shadow:0 4px 0 #c8860f">はじめる</button>
+    <form class="cta-form" id="signup-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSflY4tiOCJytrZUivdcZNvCcYc-d3qsWNkgrr9CpXL1VHUDvQ/formResponse"
+          method="POST" target="rally-gform"
+          onsubmit="setTimeout(function(){var f=document.getElementById('signup-form');f.style.display='none';document.getElementById('signup-done').style.display='flex';},250);">
+      <input type="email" name="entry.710356664" placeholder="メールアドレスを入力" required />
+      <button type="submit" class="btn btn-sun" style="padding:0 24px;font-size:15px;height:48px;white-space:nowrap;box-shadow:0 4px 0 #c8860f">はじめる</button>
     </form>
+    <div id="signup-done" style="display:none;align-items:center;justify-content:center;gap:8px;max-width:380px;margin:0 auto 12px;background:#fff;color:#4f7a0e;font-weight:700;font-size:15px;line-height:1.5;padding:12px 18px;border-radius:var(--border-radius-lg);">
+      <i class="ti ti-circle-check" style="font-size:20px;flex-shrink:0" aria-hidden="true"></i>ご登録ありがとうございます！リリース時にご連絡します。
+    </div>
     <p class="cta-fine">クレジットカード不要・いつでも解約OK</p>
+    <iframe name="rally-gform" title="送信処理" style="display:none" aria-hidden="true"></iframe>
   </div>
 </section>
 
