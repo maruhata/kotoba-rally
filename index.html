@@ -213,6 +213,26 @@ body { font-family: var(--font-sans); color: var(--color-text-primary); backgrou
 .cta-form .btn-sun:active { box-shadow: 0 1px 0 #c8860f; }
 .cta-fine { font-size: 13px; color: #dcefc0; font-weight: 600; }
 
+/* 料金 */
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 1.2rem; }
+.price-card { border-radius: var(--border-radius-xl); padding: 1.5rem 1.4rem; border: 2px solid; position: relative; }
+.pc-early { background: #fffdf7; border-color: var(--sun); box-shadow: 0 4px 20px rgba(255,176,46,.18); }
+.pc-regular { background: var(--gl); border-color: var(--g); }
+.price-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+.pb-hot { background: var(--coral); color: #fff; }
+.pb-std { background: var(--g); color: #fff; }
+.price-plan { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+.price-main { display: flex; align-items: flex-end; gap: 2px; margin-bottom: 4px; }
+.price-yen { font-size: 38px; font-weight: 800; color: var(--ink); line-height: 1; }
+.price-unit { font-size: 14px; color: var(--ink2); font-weight: 600; padding-bottom: 5px; }
+.price-note { font-size: 12.5px; color: var(--ink2); font-weight: 500; margin-bottom: 10px; }
+.price-strike { text-decoration: line-through; opacity: .7; }
+.price-annual { font-size: 13px; color: var(--gd); font-weight: 700; margin-bottom: 10px; }
+.price-limit { background: var(--sunl); border: 1.5px solid #ffd07a; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: var(--sund); text-align: center; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.price-free { background: var(--bll); border: 1.5px solid #bcdcf7; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: var(--bld); text-align: center; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.price-feat { font-size: 13.5px; display: flex; align-items: flex-start; gap: 6px; font-weight: 500; color: #444; }
+
 /* フッター */
 .footer { background: #2e3a1c; padding: 1.6rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .footer-logo { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; color: #dbe9c0; text-decoration: none; }
@@ -223,7 +243,7 @@ body { font-family: var(--font-sans); color: var(--color-text-primary); backgrou
 .footer-copy { font-size: 12.5px; color: #7d9159; font-weight: 500; }
 
 @media (max-width: 600px) {
-  .ba-grid, .val-grid { grid-template-columns: 1fr; }
+  .ba-grid, .val-grid, .pricing-grid { grid-template-columns: 1fr; }
   .intro { grid-template-columns: 1fr; text-align: center; }
   .hero-h1 { font-size: 24px; }
   .cta-form { flex-direction: column; }
@@ -418,6 +438,40 @@ body { font-family: var(--font-sans); color: var(--color-text-primary); backgrou
     <div class="faq"><div class="faq-q"><span class="qm">Q</span>子どものデータはどう扱われますか？</div><p class="faq-a">個人情報と会話データは暗号化して保管し、第三者提供は一切行いません。保護者の同意なしにAIの学習データへ利用することもありません。</p></div>
     <div class="faq"><div class="faq-q"><span class="qm">Q</span>テニス以外の習い事でも使えますか？</div><p class="faq-a">現在はテニスを習う小学生と保護者に特化して設計しています。将来的には他の習い事への対応も検討しています。</p></div>
     <div class="faq"><div class="faq-q"><span class="qm">Q</span>親と子で別々のデバイスが必要ですか？</div><p class="faq-a">子ども用アプリと親御さん用ダッシュボードはそれぞれのスマホでお使いいただけます。共用タブレットでアカウントを切り替えての利用も可能です。</p></div>
+  </div>
+</section>
+
+<section class="sec sec-white" id="pricing">
+  <span class="eyebrow eb-sun"><i class="ti ti-tag" style="font-size:13px" aria-hidden="true"></i>料金</span>
+  <h2 class="sec-h2">シンプルな料金体系</h2>
+  <p class="sec-sub">初月無料でお試しいただけます。合わなければいつでも解約OK。</p>
+  <div class="pricing-grid">
+    <div class="price-card pc-early">
+      <div class="price-badge pb-hot"><i class="ti ti-bolt" style="font-size:11px" aria-hidden="true"></i>先着20名限定</div>
+      <div class="price-plan">ローンチ特別価格</div>
+      <div class="price-main"><span class="price-yen">¥300</span><span class="price-unit">/月</span></div>
+      <div class="price-note">最初の1年間 <span class="price-strike">（通常 ¥550/月）</span></div>
+      <div class="price-limit"><i class="ti ti-flame" style="font-size:13px" aria-hidden="true"></i>残り枠わずか・先着20名のみ</div>
+      <ul class="price-features">
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--coral);flex-shrink:0" aria-hidden="true"></i>ラリー君チャット（無制限）</li>
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--coral);flex-shrink:0" aria-hidden="true"></i>親向けダッシュボード</li>
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--coral);flex-shrink:0" aria-hidden="true"></i>声かけ提案・レッスン前通知</li>
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--coral);flex-shrink:0" aria-hidden="true"></i>初月無料</li>
+      </ul>
+    </div>
+    <div class="price-card pc-regular">
+      <div class="price-badge pb-std"><i class="ti ti-calendar" style="font-size:11px" aria-hidden="true"></i>通常料金</div>
+      <div class="price-plan">月額プラン</div>
+      <div class="price-main"><span class="price-yen">¥550</span><span class="price-unit">/月</span></div>
+      <div class="price-annual"><i class="ti ti-calendar-stats" style="font-size:12px" aria-hidden="true"></i> 年間プラン ¥5,500/年（2ヶ月分お得）</div>
+      <div class="price-free"><i class="ti ti-gift" style="font-size:13px" aria-hidden="true"></i>初月無料ではじめられます</div>
+      <ul class="price-features">
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--g);flex-shrink:0" aria-hidden="true"></i>ラリー君チャット（無制限）</li>
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--g);flex-shrink:0" aria-hidden="true"></i>親向けダッシュボード</li>
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--g);flex-shrink:0" aria-hidden="true"></i>声かけ提案・レッスン前通知</li>
+        <li class="price-feat"><i class="ti ti-check" style="font-size:14px;color:var(--g);flex-shrink:0" aria-hidden="true"></i>いつでも解約OK</li>
+      </ul>
+    </div>
   </div>
 </section>
 
