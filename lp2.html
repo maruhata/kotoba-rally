@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KotobaRally — 習い事が、生きる力に変わる</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: #1a1a1a; background: #fff; }
+
+.lp {
+  --g: #7cb518; --gd: #4f7a0e; --gl: #eef8d8;
+  --teal: #0d9488; --teald: #0f766e; --teall: #f0fdfa;
+  --purple: #7c3aed; --purpled: #6d28d9; --purplel: #f5f3ff;
+  --orange: #ea580c; --orangel: #fff7ed;
+  --coral: #ff7a59; --crd: #c8492c; --crl: #fff0eb;
+  --sun: #ffb02e; --sund: #b9760a; --sunl: #fff5e0;
+  --cream: #fffdf7; --ink: #2b2b2b; --ink2: #6b6b6b;
+  max-width: 860px;
+  margin: 0 auto;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ── ナビ ── */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 22px; background: #fff; border-bottom: 2px solid var(--gl); }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-size: 18px; font-weight: 800; color: var(--gd); letter-spacing: -0.3px; text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.nav-link { font-size: 15px; font-weight: 500; color: var(--ink2); text-decoration: none; }
+.nav-link:hover { color: var(--gd); }
+.btn { font-family: inherit; border: none; cursor: pointer; font-weight: 700; border-radius: 999px; line-height: 1; display: inline-block; text-decoration: none; text-align: center; transition: filter .1s; }
+.btn:hover { filter: brightness(.93); }
+.btn:active { filter: brightness(.87); transform: scale(.97); }
+.btn-g { background: var(--g); color: #fff; }
+.btn-teal { background: var(--teal); color: #fff; }
+.btn-sun { background: var(--sun); color: #5a3a00; }
+.nav-cta { padding: 10px 22px; font-size: 14px; }
+
+/* ── ヒーロー ── */
+.hero { background: linear-gradient(160deg, #eef8d8 0%, #f0fdfa 60%, #f5f3ff 100%); padding: 3.5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: '✨'; position: absolute; top: 20px; left: 30px; font-size: 40px; opacity: 0.3; }
+.hero::after { content: '🌱'; position: absolute; bottom: 20px; right: 30px; font-size: 40px; opacity: 0.3; }
+.hero-pill { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--teald); font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 999px; margin-bottom: 1.4rem; border: 2px solid #a7f3d0; box-shadow: 0 2px 8px rgba(13,148,136,0.1); }
+.hero-h1 { font-size: 36px; font-weight: 900; line-height: 1.3; letter-spacing: -0.8px; margin-bottom: 1.2rem; color: var(--ink); }
+.hero-h1 .hl-g { color: var(--gd); }
+.hero-h1 .hl-t { color: var(--teald); }
+.hero-h1 .hl-u { position: relative; display: inline-block; }
+.hero-h1 .hl-u::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 9px; background: var(--sun); opacity: .4; z-index: -1; border-radius: 4px; }
+.hero-p { font-size: 17px; color: #4a4a4a; line-height: 1.9; max-width: 500px; margin: 0 auto 1rem; font-weight: 500; }
+.hero-sub { font-size: 14px; color: var(--ink2); line-height: 1.8; max-width: 480px; margin: 0 auto 2.2rem; }
+
+.skill-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2.4rem; }
+.skill-pill { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+.sp-1 { background: var(--teall); color: var(--teald); border: 1.5px solid #a7f3d0; }
+.sp-2 { background: var(--purplel); color: var(--purpled); border: 1.5px solid #ddd6fe; }
+.sp-3 { background: var(--sunl); color: var(--sund); border: 1.5px solid #fde68a; }
+.sp-4 { background: var(--gl); color: var(--gd); border: 1.5px solid #bef264; }
+
+.hero-cta { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.hero-cta .btn-teal { padding: 16px 48px; font-size: 17px; box-shadow: 0 4px 0 var(--teald); }
+.hero-trust { display: flex; align-items: center; gap: 16px; font-size: 13px; color: #3d7c6a; font-weight: 600; flex-wrap: wrap; justify-content: center; }
+.hero-trust span { display: inline-flex; align-items: center; gap: 4px; }
+
+/* ── セクション共通 ── */
+.sec { padding: 3.2rem 2rem; }
+.sec-cream { background: var(--cream); }
+.sec-teal { background: var(--teall); }
+.sec-white { background: #fff; }
+.sec-purple { background: var(--purplel); }
+.sec-gray { background: #f8f8f6; }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 800; letter-spacing: .04em; padding: 5px 14px; border-radius: 999px; margin-bottom: 14px; }
+.eb-g { background: var(--g); color: #fff; }
+.eb-t { background: var(--teal); color: #fff; }
+.eb-p { background: var(--purple); color: #fff; }
+.eb-s { background: var(--sun); color: #5a3a00; }
+.eb-o { background: var(--orange); color: #fff; }
+
+.sec-h2 { font-size: 27px; font-weight: 900; line-height: 1.4; letter-spacing: -0.4px; margin-bottom: .6rem; }
+.sec-sub { font-size: 16px; color: var(--ink2); line-height: 1.85; margin-bottom: 1.8rem; font-weight: 500; }
+.accent-t { color: var(--teald); }
+.accent-p { color: var(--purpled); }
+.accent-g { color: var(--gd); }
+
+/* ── 親の本音 ── */
+.voice-block { background: #fff; border: 2px solid #e0e7ff; border-radius: 20px; padding: 2rem; margin-bottom: 1.6rem; position: relative; }
+.voice-block::before { content: '"'; position: absolute; top: -10px; left: 20px; font-size: 60px; color: var(--teal); opacity: 0.15; line-height: 1; font-family: Georgia, serif; }
+.voice-quote { font-size: 18px; font-weight: 700; line-height: 1.7; color: var(--ink); margin-bottom: 12px; padding-top: 8px; }
+.voice-note { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+.voice-source { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--teald); margin-top: 10px; background: var(--teall); padding: 4px 12px; border-radius: 999px; }
+
+.hidden-goal { background: linear-gradient(135deg, #f0fdfa, #f5f3ff); border: 2px solid #a7f3d0; border-radius: 20px; padding: 1.8rem; text-align: center; }
+.hg-icon { font-size: 48px; margin-bottom: 12px; }
+.hg-title { font-size: 20px; font-weight: 900; color: var(--teald); margin-bottom: 8px; }
+.hg-body { font-size: 15px; color: #444; line-height: 1.8; font-weight: 500; }
+
+/* ── 問題提起 ── */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.6rem; }
+.problem-card { border-radius: 16px; padding: 1.4rem; border: 2px solid; }
+.pc-x { background: var(--crl); border-color: #ffd9cd; }
+.pc-q { background: var(--sunl); border-color: #fde68a; }
+.pc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.pc-badge { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.pcb-x { background: var(--coral); }
+.pcb-q { background: var(--sun); }
+.pc-title { font-size: 15px; font-weight: 800; }
+.pc-x .pc-title { color: var(--crd); }
+.pc-q .pc-title { color: var(--sund); }
+.pc-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.pc-item { font-size: 13.5px; line-height: 1.6; display: flex; gap: 7px; align-items: flex-start; font-weight: 500; }
+.pc-x .pc-item { color: #8a3a24; }
+.pc-q .pc-item { color: #78520a; }
+
+.gap-explain { background: #fff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 1.4rem 1.6rem; display: flex; align-items: flex-start; gap: 12px; }
+.ge-icon { font-size: 28px; flex-shrink: 0; }
+.ge-body { font-size: 15px; color: #444; line-height: 1.8; font-weight: 500; }
+.ge-body strong { color: var(--teald); font-weight: 800; }
+
+/* ── 非認知能力 ── */
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 1.6rem; }
+.skill-card { border-radius: 18px; padding: 1.6rem; border: 2px solid; }
+.sk-1 { background: var(--teall); border-color: #a7f3d0; }
+.sk-2 { background: var(--purplel); border-color: #ddd6fe; }
+.sk-3 { background: var(--sunl); border-color: #fde68a; }
+.sk-4 { background: var(--gl); border-color: #bef264; }
+.sk-icon { font-size: 36px; margin-bottom: 10px; }
+.sk-name { font-size: 17px; font-weight: 900; margin-bottom: 6px; }
+.sk-1 .sk-name { color: var(--teald); }
+.sk-2 .sk-name { color: var(--purpled); }
+.sk-3 .sk-name { color: var(--sund); }
+.sk-4 .sk-name { color: var(--gd); }
+.sk-desc { font-size: 13.5px; line-height: 1.7; color: #444; font-weight: 500; }
+.sk-how { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-top: 10px; }
+.sk-1 .sk-how { background: var(--teal); color: #fff; }
+.sk-2 .sk-how { background: var(--purple); color: #fff; }
+.sk-3 .sk-how { background: var(--sun); color: #5a3a00; }
+.sk-4 .sk-how { background: var(--g); color: #fff; }
+
+.research-note { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; margin-top: 1.6rem; font-size: 13px; color: var(--ink2); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+.research-note i { color: var(--teal); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── 使い方ステップ ── */
+.steps { display: flex; flex-direction: column; gap: 14px; }
+.step { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 18px; padding: 1.2rem 1.4rem; border: 2px solid; }
+.st-1 { border-color: #a7f3d0; }
+.st-2 { border-color: #ddd6fe; }
+.st-3 { border-color: #fde68a; }
+.st-4 { border-color: #bef264; }
+.step-num { width: 46px; height: 46px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: #fff; flex-shrink: 0; }
+.sn1 { background: var(--teal); }
+.sn2 { background: var(--purple); }
+.sn3 { background: var(--sun); color: #5a3a00; }
+.sn4 { background: var(--g); }
+.step-chip { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; margin-bottom: 5px; }
+.ch1 { background: var(--teall); color: var(--teald); }
+.ch2 { background: var(--purplel); color: var(--purpled); }
+.ch3 { background: var(--sunl); color: var(--sund); }
+.ch4 { background: var(--gl); color: var(--gd); }
+.step-title { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+.step-desc { font-size: 14.5px; color: var(--ink2); line-height: 1.7; font-weight: 500; }
+
+/* ── チャットデモ ── */
+.phone { max-width: 310px; margin: 0 auto; background: #fff; border: 3px solid #222; border-radius: 30px; padding: 10px; }
+.phone-notch { width: 90px; height: 6px; background: #222; border-radius: 999px; margin: 2px auto 10px; }
+.chat-head { display: flex; align-items: center; gap: 9px; padding: 6px 10px 12px; border-bottom: 2px solid var(--gl); margin-bottom: 12px; }
+.chat-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #0d9488, #7c3aed); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.chat-name { font-size: 15px; font-weight: 800; color: var(--teald); }
+.chat-status { font-size: 12px; color: var(--teal); font-weight: 700; display: flex; align-items: center; gap: 4px; }
+.chat-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); display: inline-block; }
+.chat-body { display: flex; flex-direction: column; gap: 10px; padding: 0 6px 8px; }
+.msg { display: flex; gap: 7px; align-items: flex-end; }
+.msg.me { flex-direction: row-reverse; }
+.msg-av { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #0d9488, #7c3aed); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.msg-kidav { width: 26px; height: 26px; border-radius: 50%; background: var(--sunl); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
+.bub { max-width: 80%; padding: 10px 14px; font-size: 14px; line-height: 1.6; font-weight: 500; }
+.bub-r { background: var(--teall); color: #0f5a53; border-radius: 16px 16px 16px 4px; }
+.bub-k { background: #f0ebfd; color: #4a3fb0; border-radius: 16px 16px 4px 16px; }
+.bub-p { background: var(--gl); color: #3d5e0c; border-radius: 16px 16px 4px 16px; }
+
+/* ── 対応習い事 ── */
+.activity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 1.6rem; }
+.activity-card { background: #fff; border: 2px solid var(--border, #e2e8f0); border-radius: 16px; padding: 1.2rem 0.8rem; text-align: center; }
+.activity-icon { font-size: 32px; margin-bottom: 6px; }
+.activity-name { font-size: 13px; font-weight: 700; color: var(--ink2); }
+
+/* ── 成果サマリー ── */
+.dash { background: #fff; border: 2px solid var(--teall); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 24px rgba(13,148,136,0.08); }
+.dash-top { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--teal); }
+.dash-top-l { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; color: #fff; }
+.dash-date { font-size: 13px; color: #fff; font-weight: 600; background: rgba(255,255,255,.2); padding: 4px 10px; border-radius: 999px; }
+.dash-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.dcard { border-radius: 14px; padding: 12px 14px; border: 2px solid; }
+.dc-grit { background: var(--teall); border-color: #a7f3d0; }
+.dc-self { background: var(--sunl); border-color: #fde68a; }
+.dc-comm { background: var(--purplel); border-color: #ddd6fe; }
+.dc-grow { background: var(--gl); border-color: #bef264; }
+.dc-lbl { font-size: 13.5px; font-weight: 800; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+.dc-grit .dc-lbl { color: var(--teald); }
+.dc-self .dc-lbl { color: var(--sund); }
+.dc-comm .dc-lbl { color: var(--purpled); }
+.dc-grow .dc-lbl { color: var(--gd); }
+.dc-txt { font-size: 14.5px; line-height: 1.7; color: #444; font-weight: 500; }
+
+/* ── 料金 ── */
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.price-card { border-radius: 20px; padding: 1.8rem; border: 2px solid; background: #fff; }
+.pc-std { border-color: #e2e8f0; }
+.pc-prem { background: linear-gradient(180deg, #fff, #f5f3ff); border-color: #c4b5fd; box-shadow: 0 6px 24px rgba(124,58,237,.14); }
+.price-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
+.pb-std { background: #f1f5f9; color: #475569; }
+.pb-prem { background: var(--purple); color: #fff; }
+.price-name { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+.price-yen { font-size: 32px; font-weight: 900; color: var(--ink); }
+.price-yen sup { font-size: 18px; font-weight: 700; vertical-align: super; }
+.price-yen sub { font-size: 14px; font-weight: 600; color: var(--ink2); }
+.price-feats { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-top: 1.2rem; }
+.price-feat { font-size: 14px; display: flex; gap: 7px; align-items: flex-start; font-weight: 500; color: #444; }
+.price-feat i { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.pc-std .price-feat i { color: #94a3b8; }
+.pc-prem .price-feat i { color: var(--purple); }
+.price-free { background: var(--teall); border: 1.5px solid #a7f3d0; color: var(--teald); font-size: 12.5px; font-weight: 700; padding: 7px 12px; border-radius: 10px; margin-top: 12px; text-align: center; }
+
+.promo-banner { display: flex; align-items: center; gap: 12px; background: linear-gradient(90deg, #fff6e9, #fff0eb); border: 2px solid #ffd07a; border-radius: 16px; padding: 14px 18px; margin: 1.2rem 0 0; flex-wrap: wrap; }
+.promo-banner .pi { width: 38px; height: 38px; border-radius: 12px; background: var(--coral); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.promo-banner .pt { flex: 1; min-width: 200px; font-size: 14px; line-height: 1.6; color: #8a5a2a; font-weight: 600; }
+.promo-banner .pt strong { display: block; font-size: 15px; font-weight: 800; color: #c8492c; margin-bottom: 1px; }
+.promo-remain { font-size: 12px; font-weight: 800; color: #fff; background: var(--coral); padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+
+/* ── CTA ── */
+.cta-sec { background: linear-gradient(135deg, #0d9488, #7c3aed); padding: 3.5rem 2rem; text-align: center; }
+.cta-sec h2 { font-size: 26px; font-weight: 900; color: #fff; line-height: 1.4; margin-bottom: 0.8rem; }
+.cta-sec p { font-size: 16px; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 2rem; font-weight: 500; }
+.cta-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+.cta-form input { flex: 1; padding: 14px 18px; border-radius: 999px; border: none; font-size: 15px; font-family: inherit; outline: none; }
+.cta-form .btn-sun { padding: 14px 28px; font-size: 15px; box-shadow: 0 4px 0 var(--sund); white-space: nowrap; }
+.cta-note { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 12px; }
+.cta-link { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); }
+
+/* ── フッター ── */
+.footer { background: #1a2a1a; padding: 1.6rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; color: #dbe9c0; text-decoration: none; }
+.footer-links { display: flex; gap: 16px; }
+.footer-link { font-size: 13px; color: #a8bd84; text-decoration: none; font-weight: 500; }
+.footer-link:hover { color: #fff; }
+.footer-copy { font-size: 12.5px; color: #7d9159; font-weight: 500; }
+
+@media (max-width: 600px) {
+  .skills-grid, .problem-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .activity-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-h1 { font-size: 26px; }
+  .cta-form { flex-direction: column; }
+  .cta-form input, .cta-form .btn-sun { width: 100%; border-radius: 999px; }
+}
+</style>
+</head>
+<body>
+<div class="lp">
+
+<!-- ナビ -->
+<nav class="nav">
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 100 100" width="34" height="34"><circle cx="50" cy="52" r="40" fill="#9fd61f" stroke="#7ba814" stroke-width="2"/><path d="M22 26 Q48 52 22 78" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M78 26 Q52 52 78 78" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><ellipse cx="39" cy="50" rx="5" ry="6.5" fill="#4a2f12"/><ellipse cx="61" cy="50" rx="5" ry="6.5" fill="#4a2f12"/><circle cx="40.5" cy="47.5" r="1.6" fill="#fff"/><circle cx="62.5" cy="47.5" r="1.6" fill="#fff"/><circle cx="29" cy="61" r="4.5" fill="#ff9eb0" opacity="0.6"/><circle cx="71" cy="61" r="4.5" fill="#ff9eb0" opacity="0.6"/><path d="M42 61 Q50 69 58 61" fill="none" stroke="#4a2f12" stroke-width="2.5" stroke-linecap="round"/></svg>
+    KotobaRally
+  </a>
+  <div class="nav-right">
+    <a class="nav-link" href="#skills">非認知能力とは</a>
+    <a class="nav-link" href="#how">使い方</a>
+    <a class="btn btn-teal nav-cta" href="#signup">無料で始める</a>
+  </div>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-pill">🌱 習い事×非認知能力アプリ</div>
+  <h1 class="hero-h1">
+    習い事が、<br>
+    <span class="hl-u">生きる力</span>に変わる。
+  </h1>
+  <p class="hero-p">
+    子どもを習い事に通わせるとき、<br>
+    親が本当に望んでいるのは——<br>
+    <strong>競技の上達だけじゃない。</strong>
+  </p>
+  <p class="hero-sub">
+    やりきる力、コミュニケーション能力、自己肯定感。<br>
+    KotobaRallyは、今通っている習い事を通じて<br>
+    これらの「<strong>非認知能力</strong>」を育てるサポートをします。
+  </p>
+
+  <div class="skill-pills">
+    <span class="skill-pill sp-1">💪 やりきる力</span>
+    <span class="skill-pill sp-2">💬 コミュニケーション能力</span>
+    <span class="skill-pill sp-3">⭐ 自己肯定感</span>
+    <span class="skill-pill sp-4">🪞 内省力</span>
+  </div>
+
+  <div class="hero-cta">
+    <a class="btn btn-teal" href="login.html">無料で始める →</a>
+    <div class="hero-trust">
+      <span>✓ 14日間無料</span>
+      <span>✓ クレジットカード不要</span>
+      <span>✓ いつでも解約OK</span>
+    </div>
+  </div>
+</section>
+
+<!-- 親の本音 -->
+<section class="sec sec-white">
+  <div class="eyebrow eb-t"><i class="ti ti-heart"></i> 親御さんの本音</div>
+  <h2 class="sec-h2">習い事に通わせるとき、<br>本当は何を望んでいますか？</h2>
+  <p class="sec-sub">表に出てこないけれど、多くの親御さんが心の中に持っている想いがあります。</p>
+
+  <div class="voice-block">
+    <p class="voice-quote">「サッカーが上手くなることも大切だけど、それよりも——負けても諦めない気持ちや、仲間と協力する力を身につけてほしい。」</p>
+    <p class="voice-note">技術の習得はもちろん大事。でも将来社会に出たとき、本当に武器になるのは「人間力」だと感じている親御さんは多いのではないでしょうか。</p>
+    <span class="voice-source"><i class="ti ti-user"></i> お子さんが習い事に通う保護者の方</span>
+  </div>
+
+  <div class="hidden-goal">
+    <div class="hg-icon">🎯</div>
+    <div class="hg-title">習い事の「隠れた目的」</div>
+    <p class="hg-body">
+      子どもに習い事をさせる理由は「好きなことをやらせたい」「上手くなってほしい」。<br>
+      でも、その奥にある本当の願いは——<br><br>
+      <strong>「習い事を通して、将来生きていくのに必要な力を身につけてほしい」</strong><br><br>
+      これは「非認知能力」と呼ばれるもの。学力テストでは測れないけれど、<br>人生を豊かにする、最も大切な力です。
+    </p>
+  </div>
+</section>
+
+<!-- 問題提起 -->
+<section class="sec sec-gray">
+  <div class="eyebrow eb-o"><i class="ti ti-alert-triangle"></i> 見えていない問題</div>
+  <h2 class="sec-h2">習い事に通うだけでは、<br>非認知能力は育たない</h2>
+  <p class="sec-sub">毎週レッスンに行っているのに、なぜか成長が見えにくい。その理由は「振り返り」にあります。</p>
+
+  <div class="problem-grid">
+    <div class="problem-card pc-x">
+      <div class="pc-head">
+        <div class="pc-badge pcb-x">✗</div>
+        <span class="pc-title">よくある光景</span>
+      </div>
+      <ul class="pc-items">
+        <li class="pc-item">「今日のレッスンどうだった？」<br>→「べつに」「楽しかった」</li>
+        <li class="pc-item">何ができたか、何が難しかったか<br>本人も整理できていない</li>
+        <li class="pc-item">「また頑張ってね」で会話が終わる</li>
+        <li class="pc-item">成長が見えず、親も声のかけ方に迷う</li>
+      </ul>
+    </div>
+    <div class="problem-card pc-q">
+      <div class="pc-head">
+        <div class="pc-badge pcb-q">?</div>
+        <span class="pc-title">なぜ起こるの？</span>
+      </div>
+      <ul class="pc-items">
+        <li class="pc-item">体験したことを「言語化」する<br>習慣がついていない</li>
+        <li class="pc-item">感情・気づき・目標を引き出す<br>対話の機会が少ない</li>
+        <li class="pc-item">経験が「体験」で終わり、<br>「学び」に変換されていない</li>
+        <li class="pc-item">親子でじっくり話す時間も<br>なかなかとれない</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gap-explain">
+    <span class="ge-icon">💡</span>
+    <p class="ge-body">
+      非認知能力は、<strong>「体験」→「内省（振り返り）」→「言語化」→「対話」</strong>のサイクルを繰り返すことで育ちます。<br>
+      習い事に通うだけでは「体験」で止まってしまう。そこに、KotobaRallyが入ります。
+    </p>
+  </div>
+</section>
+
+<!-- 非認知能力 -->
+<section class="sec sec-teal" id="skills">
+  <div class="eyebrow eb-p"><i class="ti ti-brain"></i> 非認知能力</div>
+  <h2 class="sec-h2">KotobaRallyが育てる<br><span class="accent-p">4つの力</span></h2>
+  <p class="sec-sub">レッスン後のAI対話を通じて、これらの力が自然に育まれていきます。</p>
+
+  <div class="skills-grid">
+    <div class="skill-card sk-1">
+      <div class="sk-icon">💪</div>
+      <div class="sk-name">やりきる力（グリット）</div>
+      <p class="sk-desc">「難しかったけどやり遂げた」という体験を毎回言語化することで、困難を乗り越える力が積み上がる。</p>
+      <span class="sk-how">✓ 目標→達成→振り返りのサイクル</span>
+    </div>
+    <div class="skill-card sk-2">
+      <div class="sk-icon">💬</div>
+      <div class="sk-name">コミュニケーション能力</div>
+      <p class="sk-desc">AIとの対話で「自分の気持ちを言葉にする」習慣がつき、人との会話でも自分を表現できるようになる。</p>
+      <span class="sk-how">✓ 感情の言語化トレーニング</span>
+    </div>
+    <div class="skill-card sk-3">
+      <div class="sk-icon">⭐</div>
+      <div class="sk-name">自己肯定感</div>
+      <p class="sk-desc">小さな成長も見逃さず、毎回ポジティブなフィードバックが届く。「自分は成長できる」という自信が育つ。</p>
+      <span class="sk-how">✓ 成長の可視化・承認の積み重ね</span>
+    </div>
+    <div class="skill-card sk-4">
+      <div class="sk-icon">🪞</div>
+      <div class="sk-name">内省力（メタ認知）</div>
+      <p class="sk-desc">「何がうまくいったか」「なぜ難しかったか」を問われることで、自分を客観的に見る力が養われる。</p>
+      <span class="sk-how">✓ 週次の成長サマリーで見える化</span>
+    </div>
+  </div>
+
+  <div class="research-note">
+    <i class="ti ti-school"></i>
+    <span>非認知能力は、ノーベル経済学賞受賞者のジェームズ・ヘックマン教授らの研究でも、学力以上に人生の成功に影響することが示されています。幼少期〜青少年期の習慣的な「振り返り」と「対話」が、非認知能力の発達に大きく寄与します。</span>
+  </div>
+</section>
+
+<!-- 対応している習い事 -->
+<section class="sec sec-white">
+  <div class="eyebrow eb-g"><i class="ti ti-star"></i> 対応習い事</div>
+  <h2 class="sec-h2">どんな習い事にも使える</h2>
+  <p class="sec-sub">スポーツ・音楽・芸術・学習——ジャンルを問わず、レッスン後の振り返りに使えます。</p>
+
+  <div class="activity-grid">
+    <div class="activity-card">
+      <div class="activity-icon">🎾</div>
+      <div class="activity-name">テニス</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-icon">⚽</div>
+      <div class="activity-name">サッカー</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-icon">🏊</div>
+      <div class="activity-name">水泳</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-icon">🎹</div>
+      <div class="activity-name">ピアノ</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-icon">🥋</div>
+      <div class="activity-name">武道</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-icon">🩰</div>
+      <div class="activity-name">バレエ</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-icon">🎨</div>
+      <div class="activity-name">絵画・造形</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-icon">✏️</div>
+      <div class="activity-name">塾・学習</div>
+    </div>
+  </div>
+</section>
+
+<!-- 使い方 -->
+<section class="sec sec-cream" id="how">
+  <div class="eyebrow eb-t"><i class="ti ti-route"></i> 使い方</div>
+  <h2 class="sec-h2">たった<span class="accent-t">3分</span>の振り返りが、<br>子どもを変えていく</h2>
+  <p class="sec-sub">レッスン後にスマホひとつで完結。難しい操作は一切なし。</p>
+
+  <div class="steps">
+    <div class="step st-1">
+      <div class="step-num sn1">1</div>
+      <div>
+        <span class="step-chip ch1">レッスン直後</span>
+        <div class="step-title">AIコーチと3分チャット</div>
+        <p class="step-desc">レッスンが終わったら、子どもがAIと短い会話をします。「今日はどんな練習だった？」「むずかしかったところは？」——やさしい質問で自然に気持ちを引き出します。</p>
+      </div>
+    </div>
+    <div class="step st-2">
+      <div class="step-num sn2">2</div>
+      <div>
+        <span class="step-chip ch2">自動分析</span>
+        <div class="step-title">成長・感情・課題を言語化</div>
+        <p class="step-desc">AIが会話から「できたこと」「むずかしかったこと」「次のめあて」を抽出し、非認知能力の観点で整理します。子ども自身も気づいていなかった成長が見えてきます。</p>
+      </div>
+    </div>
+    <div class="step st-3">
+      <div class="step-num sn3">3</div>
+      <div>
+        <span class="step-chip ch3">親へ共有</span>
+        <div class="step-title">サマリーで親子の会話が変わる</div>
+        <p class="step-desc">保護者がサマリーを確認すると、「今日ね、ここができるようになったんだ！」と具体的な会話ができます。「どうだった？」→「べつに」が変わります。</p>
+      </div>
+    </div>
+    <div class="step st-4">
+      <div class="step-num sn4">4</div>
+      <div>
+        <span class="step-chip ch4">積み重ね</span>
+        <div class="step-title">続けるほど、力になる</div>
+        <p class="step-desc">週1回・月4回の積み重ねで、半年後には別人のように自分の気持ちを言葉にできる子になります。成長の記録が残るので、本人も自信がつきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- チャットデモ -->
+<section class="sec sec-white">
+  <div class="eyebrow eb-t"><i class="ti ti-message-circle"></i> デモ</div>
+  <h2 class="sec-h2">こんな会話がAIと<br>子どもの間で生まれます</h2>
+  <p class="sec-sub">難しい言葉は使わず、子どものペースに合わせてやさしく問いかけます。</p>
+
+  <div class="phone">
+    <div class="phone-notch"></div>
+    <div class="chat-head">
+      <div class="chat-av">🌟</div>
+      <div>
+        <div class="chat-name">コーチAI</div>
+        <div class="chat-status">オンライン</div>
+      </div>
+    </div>
+    <div class="chat-body">
+      <div class="msg">
+        <div class="msg-av">🌟</div>
+        <div class="bub bub-r">今日のレッスン、おつかれさまでした！どんな練習をしたか、おしえてくれる？🎉</div>
+      </div>
+      <div class="msg me">
+        <div class="msg-kidav">👦</div>
+        <div class="bub bub-k">バレーのサーブ練習してた。うまくできなかった…</div>
+      </div>
+      <div class="msg">
+        <div class="msg-av">🌟</div>
+        <div class="bub bub-r">うまくできなかったんだね。でも最後まで練習をやりきったこと、すごいと思う！<br>どんなところがむずかしかったの？</div>
+      </div>
+      <div class="msg me">
+        <div class="msg-kidav">👦</div>
+        <div class="bub bub-k">ボールをうまくとばせなくて。でも最後の1本だけうまくいったんだ！</div>
+      </div>
+      <div class="msg">
+        <div class="msg-av">🌟</div>
+        <div class="bub bub-r">最後に1本うまくいったの、すごい！😊<br>あきらめずに続けたから成功したんだね。<br>次のレッスンでどんなことを目標にしたい？</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 成果サマリー -->
+<section class="sec sec-gray">
+  <div class="eyebrow eb-t"><i class="ti ti-chart-bar"></i> 保護者向けサマリー</div>
+  <h2 class="sec-h2">子どもの「成長」が<br>見える化される</h2>
+  <p class="sec-sub">保護者の方はサマリーを確認するだけ。忙しい毎日でも、子どもの成長に寄り添えます。</p>
+
+  <div class="dash">
+    <div class="dash-top">
+      <div class="dash-top-l">
+        <span>🌱</span> 今週の成長レポート
+      </div>
+      <div class="dash-date">2025年6月 第3週</div>
+    </div>
+    <div class="dash-body">
+      <div class="dcard dc-grit">
+        <div class="dc-lbl">💪 やりきる力</div>
+        <p class="dc-txt">難しいサーブを最後まで練習し、最終ボールで成功体験。「あきらめない」場面が今週3回記録されました。</p>
+      </div>
+      <div class="dcard dc-self">
+        <div class="dc-lbl">⭐ 自己肯定感</div>
+        <p class="dc-txt">「最後の1本うまくいった」と自分の成功を言語化できています。小さな成功体験を自覚できるようになってきました。</p>
+      </div>
+      <div class="dcard dc-comm">
+        <div class="dc-lbl">💬 言語化の力</div>
+        <p class="dc-txt">「うまくできなかった」→具体的に「ボールをとばせなかった」と表現できるようになってきました（2週間前より詳細に）。</p>
+      </div>
+      <div class="dcard dc-grow">
+        <div class="dc-lbl">🎯 来週の目標（本人より）</div>
+        <p class="dc-txt">「サーブを3本連続で決める」——自分で具体的な目標を立てることができました。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="sec sec-white" id="pricing">
+  <div class="eyebrow eb-g"><i class="ti ti-package"></i> 料金プラン</div>
+  <h2 class="sec-h2">シンプルな料金体系</h2>
+  <p class="sec-sub">まずは14日間、無料でお試しください。</p>
+
+  <div class="pricing-grid">
+    <div class="price-card pc-std">
+      <div class="price-badge pb-std">スタンダード</div>
+      <div class="price-name">Standard</div>
+      <div class="price-yen"><sup>¥</sup>1,280<sub>/月</sub></div>
+      <ul class="price-feats">
+        <li class="price-feat"><i class="ti ti-check"></i> AIとの振り返りチャット（無制限）</li>
+        <li class="price-feat"><i class="ti ti-check"></i> レッスンサマリー（保護者向け）</li>
+        <li class="price-feat"><i class="ti ti-check"></i> 成長の記録・履歴保存</li>
+        <li class="price-feat"><i class="ti ti-check"></i> どんな習い事にも対応</li>
+      </ul>
+      <div class="price-free">✓ 14日間無料トライアル</div>
+    </div>
+    <div class="price-card pc-prem">
+      <div class="price-badge pb-prem">✨ プレミアム</div>
+      <div class="price-name">Premium</div>
+      <div class="price-yen"><sup>¥</sup>2,480<sub>/月</sub></div>
+      <ul class="price-feats">
+        <li class="price-feat"><i class="ti ti-check"></i> スタンダードの全機能</li>
+        <li class="price-feat"><i class="ti ti-check"></i> 月次・週次 非認知能力レポート</li>
+        <li class="price-feat"><i class="ti ti-check"></i> 成長グラフ・スコア可視化</li>
+        <li class="price-feat"><i class="ti ti-check"></i> 親子の会話アドバイス機能</li>
+        <li class="price-feat"><i class="ti ti-check"></i> 複数の習い事を個別管理</li>
+      </ul>
+      <div class="price-free" style="background:#f5f3ff;border-color:#c4b5fd;color:#6d28d9;">✓ 14日間無料トライアル</div>
+    </div>
+  </div>
+
+  <div class="promo-banner">
+    <div class="pi">🎉</div>
+    <div class="pt">
+      <strong>リリース記念：初月50%OFF</strong>
+      今お申し込みいただくと、最初の1ヶ月が半額でご利用いただけます。
+    </div>
+    <span class="promo-remain">期間限定</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="signup">
+  <h2>子どもの「生きる力」を<br>今日から育て始めよう</h2>
+  <p>14日間無料・クレジットカード不要。<br>まずは今日のレッスン後に、一緒に試してみてください。</p>
+  <div class="cta-form">
+    <input type="email" placeholder="メールアドレスを入力" />
+    <a class="btn btn-sun" href="login.html">無料で始める</a>
+  </div>
+  <p class="cta-note">
+    登録することで<a class="cta-link" href="terms.html">利用規約</a>・<a class="cta-link" href="privacy.html">プライバシーポリシー</a>に同意したものとみなします
+  </p>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+  <a class="footer-logo" href="#">
+    <svg viewBox="0 0 100 100" width="28" height="28"><circle cx="50" cy="52" r="40" fill="#9fd61f" stroke="#7ba814" stroke-width="2"/><ellipse cx="39" cy="50" rx="5" ry="6.5" fill="#4a2f12"/><ellipse cx="61" cy="50" rx="5" ry="6.5" fill="#4a2f12"/><path d="M42 61 Q50 69 58 61" fill="none" stroke="#4a2f12" stroke-width="2.5" stroke-linecap="round"/></svg>
+    KotobaRally
+  </a>
+  <div class="footer-links">
+    <a class="footer-link" href="terms.html">利用規約</a>
+    <a class="footer-link" href="privacy.html">プライバシーポリシー</a>
+    <a class="footer-link" href="tokushoho.html">特定商取引法</a>
+    <a class="footer-link" href="index.html">メインLP</a>
+  </div>
+  <span class="footer-copy">© 2025 KotobaRally</span>
+</footer>
+
+</div>
+</body>
+</html>
